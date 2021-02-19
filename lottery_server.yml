@@ -1,0 +1,15 @@
+version: '3'
+services:
+  lottery_server:
+    image: node:latest
+    working_dir: /home/app
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npm config set register https://registry.npm.taobao.org
+        npm run start:prod
+    volumes:
+      - /opt/lottery-server:/home/app
+    ports:
+      - 3002:3002
