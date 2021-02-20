@@ -4,6 +4,13 @@ import { JwtService } from "@nestjs/jwt";
 import { encrypt } from "../../utils/encrypt";
 import { UserEntity } from "src/entities/user.entity";
 
+export interface Payload {
+  id: number;
+  name: string;
+  role: number;
+  phone: string;
+}
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -31,7 +38,7 @@ export class AuthService {
   }
 
   async certificate(user: UserEntity) {
-    const payload = {
+    const payload: Payload = {
       id: user.id,
       name: user.name,
       role: user.role,

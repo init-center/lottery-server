@@ -132,6 +132,7 @@ export class UsersService {
       });
     } catch (e) {
       throw new InternalServerErrorException({
+        statusCode: HttpStatus.BAD_REQUEST,
         message: "服务器错误！",
       });
     }
@@ -145,6 +146,25 @@ export class UsersService {
       });
     } catch (e) {
       throw new InternalServerErrorException({
+        statusCode: HttpStatus.BAD_REQUEST,
+        message: "服务器错误！",
+      });
+    }
+  }
+
+  async changePassword(phone: string, newPassword: string) {
+    try {
+      return await this.usersRepository.update(
+        {
+          phone,
+        },
+        {
+          password: newPassword,
+        },
+      );
+    } catch (e) {
+      throw new InternalServerErrorException({
+        statusCode: HttpStatus.BAD_REQUEST,
         message: "服务器错误！",
       });
     }
@@ -165,6 +185,7 @@ export class UsersService {
       });
     } catch (error) {
       throw new InternalServerErrorException({
+        statusCode: HttpStatus.BAD_REQUEST,
         message: "服务器错误！",
       });
     }

@@ -65,3 +65,15 @@ export class OperateAdminDto {
   })
   name: string;
 }
+
+export class ChangePasswordDto {
+  @Length(8, 16, {
+    message: "旧密码长度必须在8 - 16位！",
+  })
+  oldPassword: string;
+
+  @Length(8, 16, {
+    message: "新密码长度必须在8 - 16位！",
+  })
+  newPassword: string;
+}
